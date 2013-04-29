@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="span4">
+    <h3>Dojo Details</h3>
+    <p>
+      <h4>
+        Name: <%= @dojo.name %>
+      </h4>
+    </p>
+
+    <p>
+      <b>Address :</b><br/> 
+      <%= @dojo.street %> <br/> 
+      <%= @dojo.city + ", " + @dojo.state+ ", " + @dojo.zip %>
+    </p>
+
+    <p>
+      <b>Active:</b> <%= @dojo.active ? "Yes" : "No" %>
+    </p>
+  </div>
+  <div class="span8 pull-right">
+    <img class="img-polaroid" src="http://media.tumblr.com/tumblr_m7vs9xYQgT1r2jyd3o1_1280.jpg"></img>
+  <p>google map here </p>
+</div>
+
+<div class="form-actions">
+  <%= link_to raw("<i class='icon-list'></i> Display All Dojos"), dojos_path, :class => 'btn'  %>&nbsp;&nbsp;
+  <%= link_to raw("<i class='icon-pencil'></i> Edit #{@dojo.name}"), edit_dojo_path(@dojo), :class => 'btn' %>&nbsp;&nbsp;
+  <%= link_to raw("<i class='icon-remove icon-white'></i> Delete #{@dojo. name}"), dojo_path(@dojo), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>
