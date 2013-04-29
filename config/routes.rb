@@ -5,6 +5,7 @@ Karate67272::Application.routes.draw do
   resources :registrations
   resources :sections
   resources :students
+  resources :dojo_students #@TODO maybe break this up so we dont have index and show pages?
   resources :dojos
   resources :tournaments
   

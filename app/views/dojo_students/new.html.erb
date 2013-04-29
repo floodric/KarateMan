@@ -1,0 +1,7 @@
+<% if @dojo.nil? %>
+  <%= render :partial => 'from_student_form' %>
+<% elsif  @student.nil? %>
+  <%= render :partial => 'from_dojo_form' %>
+<% else %>
+  <p>Something went wrong.  Please create a Dojo History by either going to the dojo, or the student you want to use, then clicking the appropriate link</p>
+<%end %>

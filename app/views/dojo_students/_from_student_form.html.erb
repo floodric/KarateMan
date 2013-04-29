@@ -1,0 +1,20 @@
+<%= simple_form_for @dojo_student, :html => { :class => 'form-horizontal' } do |f| %>
+  <fieldset>
+    <legend><%= controller.action_name.capitalize %> Dojo History</legend>
+    
+    <%= f.input :dojo_id, collection: Dojo.active.alphabetical.all %>
+    <%= f.input :student_id, collection: Student.active.alphabetical.all, default: @student.id %>
+    <% if @last.nil? #If we have a last reg, we cant start before that. otherwise do some defaults...
+     %>
+      <%= f.input :start_date, as: :date, start_year: Date.today.year, :end_year => Date.today.year + 15, :order => [:month, :day, :year] %>
+    <% else %>
+      <%= f.input :start_date, as: :date, start_year: @last.start_date.year, end_year: Date.today.year + 15, order: [:month, :day, :year] %>
+    <% end %>
+    <%= f.input :source, :as => :hidden, :input_html => { :value => "new_page" } %>
+
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', sections_path, :class => 'btn' %>
+    </div>
+  </fieldset>
+<% end %>
