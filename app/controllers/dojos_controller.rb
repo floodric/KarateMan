@@ -2,7 +2,8 @@ class DojosController < ApplicationController
   # GET /dojos
   # GET /dojos.json
   def index
-    @dojos = Dojo.all
+    @dojos = Dojo.active.alphabetical.paginate(:page => params[:page]).per_page(10)
+    @inactive_dojos = Dojo.inactive.alphabetical.paginate(:page => params[:page]).per_page(10)
 
     respond_to do |format|
       format.html # index.html.erb

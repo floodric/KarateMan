@@ -1,41 +1,12 @@
 <div class="row">
-  <div class="span12">
-    <% if @dojos.nil? %>
-      <p><em>No dojos currently in the system.</em></p>
-    <% else %>
-      <h3>List of dojos</h3>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th width="250">Name</th>
-            <th width="250">Address</th>
-            <th class="centered">City</th>
-            <th class="centered">State</th>
-            <th class="centered">Zip</th>
-            <th class="centered">Active</th>
-            <th class="centered">&nbsp;</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @dojos.each do |dojo| %>
-            <tr>
-              <td><%= link_to dojo.name, dojo_path(dojo) %></td>
-              <td><%= dojo.street %></td>
-              <td><%= dojo.city %></td>
-              <td><%= dojo.state %></td>
-              <td><%= dojo.zip %></td>
-              <td class="centered"><%= dojo.active ? "Yes" : "No" %></td>
-              <td class="centered">
-                <%= link_to raw("<i class='icon-pencil'></i> Edit"), edit_dojo_path(dojo), :class => 'btn btn-mini' %>
-                &nbsp;
-                <%= link_to raw("<i class='icon-remove icon-white'></i> Destroy"), dojo_path(dojo), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    <% end %>
+  <div class="span8">
+    <h3>Active Dojos</h3>
+    <%= render :partial => "active_dojos" %>
+  </div>
+  <div class="span4">
+    <h3>Inactive Dojos</h3>
+    <%= render :partial => "inactive_dojos" %>
   </div>
 </div>
 
-<%= link_to raw("<i class='icon-plus icon-white'></i> Add a New Dojo"), new_dojo_path, :class => 'btn btn-primary', :id => 'Create Section' %>
+<%= link_to raw("<i class='icon-plus icon-white'></i> Add a New dojo"), new_dojo_path, :class => 'btn btn-primary', :id => 'Create dojo' %>

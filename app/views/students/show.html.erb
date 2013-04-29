@@ -4,14 +4,24 @@
 		<%= render :partial => "student_details" %>
 	</div>
 	<div class="span4">
+	  <h3>User Info</h3>
+		<%= render :partial => "user_details" %>
+	</div>
+</div>
+<div class="row">
+	<div class="span8">
 	  <h3>Tournament Activity</h3>
 		<%= render :partial => "activities" unless @registrations.empty? %>
 	  
 	  <!-- <p class="supertiny">&nbsp;</p> -->
 		<!-- <h3>Dojo History</h3> -->
-		<%# render :partial => "dojo_history" unless @dojo_history.empty? %>
-		<%# link_to(raw("<i class='icon-plus icon-white'></i> New Dojo"), new_dojo_student_path(:id => @student.id, :from => 'student'), :class => 'btn btn-primary') %>
 		
+		
+	</div>
+	<div class="span4">
+		<h3>Dojo History</h3>
+		<%= render :partial => "dojo_history" unless (true or @dojo_history.empty?) %>
+		<%# link_to(raw("<i class='icon-plus icon-white'></i> New Dojo"), new_dojo_student_path(:id => @student.id, :from => 'student'), :class => 'btn btn-primary') %>
 	</div>
 </div>
 
