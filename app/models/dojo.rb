@@ -28,6 +28,11 @@ class Dojo < ActiveRecord::Base
     self.students.alphabetical.select{|s| s.current_dojo == self}.uniq
   end
   
+  def create_map_link(zoom=15,width=400,height=400)
+    marker = "&markers=color:red%7Ccolor:red%7C#{self.latitude},#{self.longitude}"
+    map = "http://maps.google.com/maps/api/staticmap?center= #{latitude},#{longitude}&zoom=#{zoom}&size=#{width}x#{height}&maptype=roadmap#{marker}&sensor=false"
+  end
+
   # Callbacks
   before_destroy :check_if_destroyable
   after_rollback :deactivate_dojo_logic

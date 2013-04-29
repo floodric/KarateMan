@@ -2,25 +2,12 @@
 <div class="row">
   <div class="span4">
     <h3>Dojo Details</h3>
-    <p>
-      <h4>
-        Name: <%= @dojo.name %>
-      </h4>
-    </p>
-
-    <p>
-      <b>Address :</b><br/> 
-      <%= @dojo.street %> <br/> 
-      <%= @dojo.city + ", " + @dojo.state+ ", " + @dojo.zip %>
-    </p>
-
-    <p>
-      <b>Active:</b> <%= @dojo.active ? "Yes" : "No" %>
-    </p>
+    <%= render partial: "dojo_details" %>
+    <%= render partial: "dojo_students" %>
   </div>
-  <div class="span8 pull-right">
-    <img class="img-polaroid" src="http://media.tumblr.com/tumblr_m7vs9xYQgT1r2jyd3o1_1280.jpg"></img>
-  <p>google map here </p>
+  <div class="span7">
+    <%= image_tag @dojo.create_map_link, class: "img-rounded pull-right" %>
+  </div>
 </div>
 
 <div class="form-actions">

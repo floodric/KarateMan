@@ -1,0 +1,15 @@
+<p>
+  <h4>
+    Name: <%= @dojo.name %>
+  </h4>
+</p>
+
+<p>
+  <b>Address :</b><br/> 
+  <%= @dojo.street %> <br/> 
+  <%= @dojo.city + ", " + @dojo.state+ ", " + @dojo.zip %>
+</p>
+
+<p>
+  <b>Active:</b> <%= @dojo.active ? "Yes" : "No" %>
+</p>

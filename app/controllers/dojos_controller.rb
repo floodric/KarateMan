@@ -15,6 +15,7 @@ class DojosController < ApplicationController
   # GET /dojos/1.json
   def show
     @dojo = Dojo.find(params[:id])
+    @dojo_students = (@dojo.current_students.select{|s| s.active==true})#.paginate(:page => params[:page]).per_page(5)
 
     respond_to do |format|
       format.html # show.html.erb
