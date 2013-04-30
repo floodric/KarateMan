@@ -1,0 +1,19 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Event</th>
+      <th>Age Range</th>
+      <th>Rank Range</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @sections.each do |section| %>
+      <tr>
+        <td><%= link_to section.event.name, section_path(section.id) %></td>
+        <td><%= age_range_for(section) %></td>
+        <td><%= rank_range_for(section) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @sections, :previous_label => "Previous", :next_label => "Next" %>

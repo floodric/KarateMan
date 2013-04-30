@@ -1,0 +1,27 @@
+<% if @inactive_tournaments.empty? %>
+  &nbsp;&nbsp;<em>None at this time</em>
+<% else %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @inactive_tournaments.each do |tournament| %>
+        <tr>
+          <td><%= link_to tournament.name, tournament_path(tournament) %></td>
+          <td><%= tournament.date.nil? ? "---" : tournament.date  %></td>
+          
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="digg_pagination">
+    <div clas="page_info">
+      <%= page_entries_info @inactive_tournaments %>
+    </div>
+    <%= will_paginate @inactive_tournaments, :container => true, :previous_label => "Previous", :next_label => "Next" %>
+  </div>
+<% end %>

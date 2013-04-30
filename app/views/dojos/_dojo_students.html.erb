@@ -1,0 +1,19 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Student</th>
+      <th>Rank</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @dojo_students.each do |s| %>
+      <tr>
+        <td><%= link_to s.proper_name, student_path(s.id) %></td>
+        <td>
+          <%= s.rank %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @dojo_students, :previous_label => "Previous", :next_label => "Next" %>

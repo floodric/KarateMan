@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="span4">
+    <h3>Tournament Details</h3>
+    <p>
+      <b>Name:</b> <%= @tournament.name %>
+    </p>
+
+    <p>
+      <b>Date:</b> <%= @tournament.date.strftime("%m/%d/%y") %>
+    </p>
+    <p><b>Ranks:</b> <%= rank_range_for(@tournament) %>
+    <p>
+      <b>Active:</b> <%= @tournament.active ? "Yes" : "No" %>
+    </p>
+  </div>
+  <div class="span8">
+    <h3>Tournament Sections</h3>
+    <% if @sections.empty? %>
+      <p>No sections for this tournament yet</p>
+      <%= link_to(raw("<i class='icon-plus icon-white'></i> New Section"), new_section_path(:id => @tournament.id, :from => 'tournament'), :class => 'btn btn-primary') %>
+    <%else%>
+      <%= render partial: "tournament_sections" %>
+    <%end%>
+  </div>
+</div>
+
+<div class="form-actions">
+  <%= link_to raw("<i class='icon-list'></i> Display All Tournaments"), tournaments_path, :class => 'btn'  %>&nbsp;&nbsp;
+  <%= link_to raw("<i class='icon-pencil'></i> Edit Tournament"), edit_tournament_path(@tournament), :class => 'btn' %>&nbsp;&nbsp;
+  <%= link_to raw("<i class='icon-remove icon-white'></i> Delete Tournaments"), tournament_path(@tournament), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>
