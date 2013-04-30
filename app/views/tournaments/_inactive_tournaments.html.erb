@@ -5,7 +5,12 @@
     <thead>
       <tr>
         <th>Name</th>
+<<<<<<< HEAD
         <th>Date</th>
+=======
+        <th>Rank</th>
+        <th>Last Tournament</th>
+>>>>>>> dcf409cc16b0d469275d8df6ba5f46c64659f8e8
       </tr>
     </thead>
     <tbody>
@@ -13,6 +18,10 @@
         <tr>
           <td><%= link_to tournament.name, tournament_path(tournament) %></td>
           <td><%= tournament.date.nil? ? "---" : tournament.date  %></td>
+<<<<<<< HEAD
+=======
+          <td><%= rank_range_for(tournament)  %></td>
+>>>>>>> dcf409cc16b0d469275d8df6ba5f46c64659f8e8
           
         </tr>
       <% end %>

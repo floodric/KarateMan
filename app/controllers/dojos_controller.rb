@@ -2,7 +2,6 @@ class DojosController < ApplicationController
   # GET /dojos
   # GET /dojos.json
   def index
-
     @dojos = Dojo.active.alphabetical.paginate(:page => params[:page]).per_page(10)
     @inactive_dojos = Dojo.inactive.alphabetical.paginate(:page => params[:page]).per_page(10)
 
@@ -17,7 +16,7 @@ class DojosController < ApplicationController
   def show
     require 'will_paginate/array'
     @dojo = Dojo.find(params[:id])
-    @dojo_students = (@dojo.current_students.select{|s| s.active==true}).paginate(:page => params[:page]).per_page(5)
+    @dojo_students = (@dojo.current_students.select{|s| s.active==true}).paginate(:page => params[:page], per_page: 5)
 
     respond_to do |format|
       format.html # show.html.erb
