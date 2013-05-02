@@ -6,9 +6,13 @@ class Ability
     if user.role? :admin
       can :manage, :all
     elsif user.role? :member
-      can [:update, :delete] Student do |student|
+      can :update, Student do |student|
         student.id == user.student_id
       end
+      can :delete. Student do |student|
+        student.id == user.student_id
+      end
+      can :read, :all
     else 
       can :read , :dojo
     end

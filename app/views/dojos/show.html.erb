@@ -3,7 +3,12 @@
   <div class="span4">
     <h3>Dojo Details</h3>
     <%= render partial: "dojo_details" %>
-    <%= render partial: "dojo_students" %>
+    <h4>Current Members</h4>
+    <%if @dojo_students.empty? %>
+      <p> There are no current students for this dojo </p>
+    <% else %>
+      <%= render partial: "dojo_students" %>
+    <% end %>
   </div>
   <div class="span7">
     <%= image_tag @dojo.create_map_link, class: "img-rounded pull-right" %>

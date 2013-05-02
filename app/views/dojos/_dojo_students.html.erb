@@ -8,9 +8,9 @@
   <tbody>
     <% @dojo_students.each do |s| %>
       <tr>
-        <td><%= link_to s.proper_name, student_path(s.id) %></td>
+        <td><%= link_to s.name, student_path(s.id) %></td>
         <td>
-          <%= s.rank %>
+          <%= rank_name(s.rank) %>
         </td>
       </tr>
     <% end %>

@@ -1,5 +1,6 @@
 class SectionsController < ApplicationController
-
+  # load_and_authorize_resource
+  
   def index
     @sections = Section.alphabetical.paginate(:page => params[:page]).per_page(8) 
   end

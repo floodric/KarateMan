@@ -47,7 +47,7 @@ class DojosController < ApplicationController
 
     respond_to do |format|
       if @dojo.save
-        format.html { redirect_to @dojo, notice: 'Dojo was successfully created.' }
+        format.html { redirect_to @dojo, notice: 'Successfully created '+@dojo.name+' dojo.' }
         format.json { render json: @dojo, status: :created, location: @dojo }
       else
         format.html { render action: "new" }
@@ -63,7 +63,7 @@ class DojosController < ApplicationController
 
     respond_to do |format|
       if @dojo.update_attributes(params[:dojo])
-        format.html { redirect_to @dojo, notice: 'Dojo was successfully updated.' }
+        format.html { redirect_to @dojo, notice: 'Successfully updated '+@dojo.name+' dojo.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -5,8 +5,8 @@
     <thead>
       <tr>
         <th>Name</th>
-        <th>Age</th>
-        <th>Rank</th>
+        <th>City, State</th>
+        <th>Members</th>
         <th>&nbsp;</th>
       </tr>
     </thead>
@@ -15,6 +15,7 @@
         <tr>
           <td><%= link_to dojo.name, dojo_path(dojo) %></td>
           <td><%= dojo.city + ", " + dojo.state %></td>
+          <td><%= dojo.current_students.size %></td>
           <td class="centered">
                 <%= link_to raw("<i class='icon-pencil'></i> Edit"), edit_dojo_path(dojo), :class => 'btn btn-mini' %>
                 &nbsp;
