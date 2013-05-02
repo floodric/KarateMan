@@ -5,7 +5,7 @@
     <%= render partial: "dojo_details" %>
     <h4>Current Members</h4>
     <%if @dojo_students.empty? %>
-      <p> There are no current students for this dojo </p>
+      <p>None at this time</p>
     <% else %>
       <%= render partial: "dojo_students" %>
     <% end %>

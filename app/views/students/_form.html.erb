@@ -2,7 +2,7 @@
   <fieldset>
     <legend><%= controller.action_name.capitalize %> Student</legend>
 		
-    <div class="span5">
+    <!--div class="span5">
     <legend>User for this student</legend>
       <div id="student_user">
         <%#= student_f.simple_fields_for :user do |user_f| %>
@@ -13,7 +13,7 @@
         </p>
       </div>
     </div>
-  </div>
+  </div-->
   <%= render partial: "student_fields", locals: {f: student_f} %>
     <div class="form-actions">
       <%= student_f.submit nil, :class => 'btn btn-primary' %>
