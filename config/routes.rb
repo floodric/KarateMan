@@ -6,8 +6,10 @@ Karate67272::Application.routes.draw do
   resources :sections
   resources :students
   resources :dojo_students #@TODO maybe break this up so we dont have index and show pages?
+  resources :users         # SAME HERE
   resources :dojos
   resources :tournaments
+  resources :users
   
   # Semi-static page routes
   match 'home' => 'home#index', :as => :home

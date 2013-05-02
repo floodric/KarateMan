@@ -7,6 +7,7 @@
 	  <h3>User Info</h3>
 	  <% if @user.nil? %>
 	  	<p>No User for this Student</p>
+	  	<%= link_to(raw("<i class='icon-plus icon-white'></i> Create User"), new_user_path(:id => @student.id, :from => 'student'), :class => 'btn btn-primary') %>
 	  <% else %>
 			<%= render :partial => "user_details"%>
 		<% end %>
@@ -18,6 +19,7 @@
 	  <h3>Tournament Activity</h3>
 	 	<% if @registrations.empty? %>
 	  	<p>No Tournament History for this Student</p>
+	  	<%= link_to(raw("<i class='icon-plus icon-white'></i> New registration"), new_registration_path(:id => @student.id, :from => 'student'), :class => 'btn btn-primary') %>
 	  <% else %>
 			<%= render :partial => "activities" %>
 		<% end %>
@@ -27,6 +29,7 @@
 		<h3>Dojo History</h3>
 		<% if @dojo_history.empty? %>
 	  	<p>No Dojo History for this Student</p>
+	  	<%= link_to(raw("<i class='icon-plus icon-white'></i> New Dojo"), new_dojo_student_path(:id => @student.id, :from => 'student'), :class => 'btn btn-primary') %>
 	  <% else %>
 			<%= render :partial => "dojo_history" %>
 			<%= link_to(raw("<i class='icon-plus icon-white'></i> New Dojo"), new_dojo_student_path(:id => @student.id, :from => 'student'), :class => 'btn btn-primary') %>

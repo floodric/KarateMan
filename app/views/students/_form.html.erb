@@ -2,18 +2,19 @@
   <fieldset>
     <legend><%= controller.action_name.capitalize %> Student</legend>
 		
-    <!--div class="span5">
+    <div class="span5">
     <legend>User for this student</legend>
       <div id="student_user">
-        <%#= student_f.simple_fields_for :user do |user_f| %>
-          <%#= render :partial => "user_fields", :locals => { :f => user_f } %>
-        <%# end %>
+        <%= student_f.simple_fields_for :user do |user_f| %>
+          <%= render :partial => "user_fields", :locals => { :f => user_f } %>
+        <% end %>
         <p>
-          <br /><%#= student_f.link_to_add(raw("<i class='icon-plus icon-white'></i> Add User"), :user, :class => 'btn btn-mini btn-primary') %>
+          <br />
+          <%= student_f.link_to_add(raw("<i class='icon-plus icon-white'></i> Add User"), :user, :class => 'btn btn-mini btn-primary') %>
         </p>
       </div>
     </div>
-  </div-->
+  </div>
   <%= render partial: "student_fields", locals: {f: student_f} %>
     <div class="form-actions">
       <%= student_f.submit nil, :class => 'btn btn-primary' %>
