@@ -21,7 +21,7 @@
 	  	<p>No Tournament History for this Student</p>
 	  	<%= link_to(raw("<i class='icon-plus icon-white'></i> New registration"), new_registration_path(:id => @student.id, :from => 'student'), :class => 'btn btn-primary') %>
 	  <% else %>
-			<%= render :partial => "activities" %>
+			<%= render :partial => "partials/activities" %>
 		<% end %>
 	</div>
 
@@ -31,7 +31,7 @@
 	  	<p>No Dojo History for this Student</p>
 	  	<%= link_to(raw("<i class='icon-plus icon-white'></i> New Dojo"), new_dojo_student_path(:id => @student.id, :from => 'student'), :class => 'btn btn-primary') %>
 	  <% else %>
-			<%= render :partial => "dojo_history" %>
+			<%= render :partial => "partials/dojo_history" %>
 			<%= link_to(raw("<i class='icon-plus icon-white'></i> New Dojo"), new_dojo_student_path(:id => @student.id, :from => 'student'), :class => 'btn btn-primary') %>
 		<% end %>
 	</div>
@@ -40,5 +40,7 @@
 <div class="form-actions">
   <%= link_to raw("<i class='icon-list'></i> Display All Students"), students_path, :class => 'btn'  %>&nbsp;&nbsp;
   <%= link_to raw("<i class='icon-pencil'></i> Edit #{@student.proper_name}"), edit_student_path(@student), :class => 'btn' %>&nbsp;&nbsp;
-  <%= link_to raw("<i class='icon-remove icon-white'></i> Delete #{@student.proper_name}"), student_path(@student), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+  <% if current_user.is_admin? %>
+  	<%= link_to raw("<i class='icon-remove icon-white'></i> Delete #{@student.proper_name}"), student_path(@student), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+  <% end %>
 </div>
