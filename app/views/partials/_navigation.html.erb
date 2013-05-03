@@ -7,4 +7,11 @@
     <li><%= link_to "Tournaments", tournaments_path %></li>
 		<!-- <li><%# link_to "Registrations", registrations_path %></li> -->
   </ul>
+  <ul class="nav pull-right">
+    <% if logged_in? %>
+      <li><%= link_to "Logout", logout_path%></li>
+    <% else %>
+      <li><%= link_to "Logout", logout_path%></li>
+    <% end %>
+  </ul>
 </div>
