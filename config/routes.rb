@@ -13,6 +13,9 @@ Karate67272::Application.routes.draw do
   
 
   resources :sessions
+  match 'logout' => 'sessions#destroy', :as => :logout
+  match 'login' => 'sessions#new', :as => :login
+  
   # Semi-static page routes
   match 'home' => 'home#index', :as => :home
   match 'about' => 'home#about', :as => :about

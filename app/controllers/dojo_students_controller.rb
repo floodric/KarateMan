@@ -1,4 +1,5 @@
 class DojoStudentsController < ApplicationController
+  before_filter :check_login
   def index
     @dojo_students = DojoStudent.by_student.paginate(:page => params[:page]).per_page(8)
   end

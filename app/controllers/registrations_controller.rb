@@ -1,5 +1,5 @@
 class RegistrationsController < ApplicationController
-  # load_and_authorize_resource
+  before_filter :check_login
 
   def index
     @registrations = Registration.by_student.paginate(:page => params[:page]).per_page(8)

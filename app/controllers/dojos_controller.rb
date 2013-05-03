@@ -1,4 +1,5 @@
 class DojosController < ApplicationController
+  before_filter :check_login, :except => [:index, :show]
   # GET /dojos
   # GET /dojos.json
   def index

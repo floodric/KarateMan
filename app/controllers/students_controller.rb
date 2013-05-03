@@ -1,5 +1,6 @@
 class StudentsController < ApplicationController
   # load_and_authorize_resource
+  before_filter :check_login
   
   def index
     @students = Student.active.alphabetical.paginate(:page => params[:page]).per_page(10)
