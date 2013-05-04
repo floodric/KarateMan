@@ -13,5 +13,19 @@
 </p>
 
 <p>
+  <b>Round Time:</b>
+  <% if @section.round_time.nil? %>
+    unset
+  <% else %>
+    <%= @section.round_time.strf('%H:%M %d/%m/%y ') %>
+  <% end %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @section.location %>
+</p>
+
+<p>
   <b>Active:</b> <%= @section.active ? "Yes" : "No" %>
 </p>

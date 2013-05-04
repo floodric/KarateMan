@@ -7,8 +7,10 @@ class SectionsController < ApplicationController
 
   def show
     @section = Section.find(params[:id])
+    # TODO, ADD REGISTRATIONS HERE
     @section_students = @section.students.alphabetical
     @registration = Registration.new
+    @tournament = @section.tournament
   end
   
   def new

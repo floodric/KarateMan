@@ -3,15 +3,17 @@
     <tr>
       <th>Event</th>
 			<th class="centered">Place</th>
+      <th>Fee Paid?</th>
     </tr>
   </thead>
   <tbody>
     <% @registrations.each do |registration| %>
       <tr>
         <td><%= link_to registration.event.name, section_path(registration.section.id) %></td>
-				<td class="centered">
-				  --
+				<td>
+				  <%= registration.section.location.nil? ? 'TBD' : registration.section.location %>
 				</td>
+        <td><%= registration.fee_paid == true ? "Yes" : "No" %></td>
       </tr>
     <% end %>
   </tbody>

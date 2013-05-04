@@ -12,6 +12,16 @@
 		<%= render :partial => "quick_register_student_for_section" %>
 	</div>
 </div>
+<div class="row">
+	<div class="span7">
+		<h3>Tournament Details</h3>
+		<%= render :partial => "partials/tournament_details" %>
+	</div>
+	<div class="span5">
+		<h3>Final Standings</h3>
+		<%= render :partial => "partials/final_standings" %>
+	</div>
+</div>
 
 <div class="form-actions">
   <%= link_to raw("<i class='icon-list'></i> Display All Sections"), sections_path, :class => 'btn'  %>&nbsp;&nbsp;

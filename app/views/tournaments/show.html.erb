@@ -1,17 +1,7 @@
 <div class="row">
   <div class="span4">
     <h3>Tournament Details</h3>
-    <p>
-      <b>Name:</b> <%= @tournament.name %>
-    </p>
-
-    <p>
-      <b>Date:</b> <%= @tournament.date.strftime("%m/%d/%y") %>
-    </p>
-    <p><b>Ranks:</b> <%= rank_range_for(@tournament) %>
-    <p>
-      <b>Active:</b> <%= @tournament.active ? "Yes" : "No" %>
-    </p>
+    <%= render :partial => "partials/tournament_details" %>
   </div>
   <div class="span8">
     <h3>Tournament Sections</h3>
