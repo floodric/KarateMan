@@ -9,6 +9,7 @@ class SectionsController < ApplicationController
     @section = Section.find(params[:id])
     # TODO, ADD REGISTRATIONS HERE
     @section_students = @section.students.alphabetical
+    @registrations = @section.registrations.by_student
     @registration = Registration.new
     @tournament = @section.tournament
   end

@@ -6,7 +6,7 @@
 		<%= f.input :event_id, :collection => Event.active.alphabetical.all %>
 		<%= f.input :min_age, :as => :string %>
 		<%= f.input :max_age, :as => :string %>
-    <%= f.input :location%>
+    <%= f.input :location %>
     <%= f.input :round_time, :as => :time, :order => [:minute, :ampm, :hour], :ampm => true  %>
 		<%= f.input :min_rank, :collection => Student::RANKS %>
 		<%= f.input :max_rank, :collection => Student::RANKS %>
