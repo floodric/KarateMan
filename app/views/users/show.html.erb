@@ -1,6 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<%= @user.email %>
-<%= @user.role %>
+<p>
+  <b>Email:</b> <%= @user.email %>
+</p>
+
+<% if current_user.is_admin? %>
+<p>
+  <b>Role:</b> <%= @user.role.capitalize %>
+</p>
+<% end %>
+
+<p>
+  <b>Active:</b> <%= @user.active ? "Yes" : "No" %>
+</p>
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

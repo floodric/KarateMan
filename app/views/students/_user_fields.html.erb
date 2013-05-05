@@ -9,5 +9,6 @@
     <% if current_user.is_admin? %>
       <%= f.input :role, :collection => User::ROLES %>
     <% end %>
+    <%= f.input :active %>
   </div>
 </div>

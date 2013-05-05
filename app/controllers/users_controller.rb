@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
-    @user.role ||= "Member"
+    @user.role ||= "member"
 
     respond_to do |format|
       if @user.save
@@ -59,6 +59,7 @@ class UsersController < ApplicationController
   # PUT /users/1.json
   def update
     @user = User.find(params[:id])
+    @user.role ||= "member"
 
     respond_to do |format|
       if @user.update_attributes(params[:user])

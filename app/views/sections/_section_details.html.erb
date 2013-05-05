@@ -17,7 +17,7 @@
   <% if @section.round_time.nil? %>
     TBA
   <% else %>
-    <%= @section.round_time.strftime('%I:%M %d/%m/%y ') %>
+    <%= @section.round_time.strftime('%I:%M %p %d/%m/%y ') %>
   <% end %>
 </p>
 
