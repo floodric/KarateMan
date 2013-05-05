@@ -3,6 +3,7 @@
     <tr>
       <th>Dojo</th>
       <th>Dates</th>
+      <th>&nbsp;</th>
     </tr>
   </thead>
   <tbody>
@@ -11,6 +12,13 @@
         <td><%= link_to ds.dojo.name, dojo_path(ds.dojo.id) %></td>
         <td>
           <%= ds.start_date.strftime("%m/%d/%y") + " - " + (ds.end_date.nil? ? "Today" : ds.end_date.strftime("%m/%d/%y")) %>
+        </td>
+        <td>
+          <% if ds.end_date.nil? %>
+            <%= link_to raw("<i class='icon-remove icon-white'></i> End"), dojo_student_path(ds), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+          <% else %>
+           <%= link_to raw("<i class='icon-pencil'></i> Edit"), edit_dojo_student_path(ds), :class => 'btn btn-mini' %>
+          <% end %>
         </td>
       </tr>
     <% end %>

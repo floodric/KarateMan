@@ -11,15 +11,18 @@
   			<th>Age</th>
         <th>Paid?</th>
   			<th>&nbsp;</th>
+        <th>&nbsp;</th>
       </tr>
     </thead>
     <tbody>
       <% @section_students.each do |student| %>
+        <% reg = @registrations.select{|reg| reg.student_id == student.id}.first %>
         <tr>
           <td><%= link_to student.name, student_path(student) %></td>
           <td><%= rank_name(student.rank)  %></td>
           <td><%= student.age %></td>
-          <td><%= @registrations.select{ |reg| reg.student_id = student.id}.first.fee_paid ? "Yes" : "No" %></td>
+          <td><%= reg.fee_paid ? "Yes" : "No" %></td>
+          <td><%= link_to raw("<i class='icon-pencil'></i>"), registration_path(reg)%></td>
           <td><%= link_to raw("<i class='icon-remove'></i>"), registration_path(Registration.for_student(student.id).for_section(@section.id).first), :method => 'delete', :confirm => 'Are you sure?' %>
         </tr>
       <% end %>

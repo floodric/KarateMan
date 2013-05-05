@@ -4,10 +4,10 @@
     
     <%= f.input :dojo_id, :collection => Dojo.active.alphabetical.all %>
     <%= f.input :student_id, :collection => Student.active.alphabetical.all %>
-    <% #get student.  check if past djstdnt, if so, limit dates accordingly.
+    <% #get student.  check if past dojostudent, if so, limit dates accordingly.
      %>
       <%= f.input :start_date, :as => :date, :start_year => Date.today.year, :end_year => Date.today.year + 15, :order => [:month, :day, :year] %>
-    <%= f.input :source, :as => :hidden, :input_html => { :value => "new_page" } %>
+    <%# f.input :source, :as => :hidden, :input_html => { :value => "new_page" } %>
 
     <div class="form-actions">
       <%= f.submit nil, :class => 'btn btn-primary' %>

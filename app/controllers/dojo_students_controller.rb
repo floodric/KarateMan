@@ -29,11 +29,11 @@ class DojoStudentsController < ApplicationController
 
   def create
     @dojo_student = DojoStudent.new(params[:dojo_student])
-    @dojo_student.date = Date.today
+    @dojo_student.start_date ||= Date.today
     if @dojo_student.save!
       # if saved to database
       flash[:notice] = "Successfully created dojo_student for #{@dojo_student.student.proper_name}."
-      redirect_to section_path(@dojo_student.section_id) # go to show section page
+      redirect_to student_path(@dojo_student.student_id) # go to show section page
     else
       # return to the 'new' form
       render :action => 'new'
@@ -43,8 +43,8 @@ class DojoStudentsController < ApplicationController
   def update
     @dojo_student = DojoStudent.find(params[:id])
     if @dojo_student.update_attributes(params[:dojo_student])
-      flash[:notice] = "Successfully updated dojo_student for #{@dojo_student.student.proper_name}."
-      redirect_to @dojo_student
+      flash[:notice] = "Changed #{@dojo_student.student.proper_name}'s' study at #{@dojo_student.dojo.name} dojo"
+      redirect_to student_path(@dojo_student.student_id)
     else
       render :action => 'edit'
     end
@@ -52,11 +52,12 @@ class DojoStudentsController < ApplicationController
 
   def destroy
     @dojo_student = DojoStudent.find(params[:id])
-    dojo_id = @dojo_student.dojo.id
-    @dojo_student.destroy
-    flash[:notice] = "Successfully removed dojo_student for #{@dojo_student.student.proper_name} from karate tournament system"
+    student_id = @dojo_student.student.id
+    @dojo_student.end_date = Date.today
+    @dojo_student.save!
+    flash[:notice] = "Ended #{@dojo_student.student.proper_name}'s' study at #{@dojo_student.dojo.name} dojo"
     # redirect_to dojo_students_url
-    redirect_to section_path(dojo_id) # go to show section page
+    redirect_to student_path(student_id) # go to show section page
   end
 
 end

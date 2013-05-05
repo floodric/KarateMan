@@ -15,15 +15,19 @@
 <p>
   <b>Round Time:</b>
   <% if @section.round_time.nil? %>
-    unset
+    TBA
   <% else %>
-    <%= @section.round_time.strf('%H:%M %d/%m/%y ') %>
+    <%= @section.round_time.strftime('%I:%M %d/%m/%y ') %>
   <% end %>
 </p>
 
 <p>
   <b>Location:</b>
-  <%= @section.location %>
+  <% if @section.location.blank? %>
+    TBA
+  <% else %>
+    <%= @section.location  %>
+  <% end %>
 </p>
 
 <p>

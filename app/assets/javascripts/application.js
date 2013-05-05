@@ -36,10 +36,10 @@
 	});
 
 // Autosubmit the quick registration form on the sections#show view
-	$(function() {
-		$('#registration_student_id').change(function()
-		 {
-		     $('#new_registration').submit();
-		 });
-	});
+	// $(function() {
+	// 	$('#registration_student_id').change(function()
+	// 	 {
+	// 	     $('#new_registration').submit();
+	// 	 });
+	// });
 	
