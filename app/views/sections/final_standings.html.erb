@@ -1,0 +1,19 @@
+<h4>HI</h4>
+<% form_tag edit_final_standings_path do %>
+<table>
+  <tr>
+    <th></th>
+    <th>Name</th>
+    <th>Final Standing</th>
+    <th>Price</th>
+  </tr>
+<% for registration in @registrations %>
+  <tr>
+    <td><%= registration.student.proper_name %></td>
+    <td><%=h registration.final_standing   %></td>
+  </tr>
+<% end %>
+</table>
+<%= submit_tag "Edit Checked" %>
+<% end %>
+

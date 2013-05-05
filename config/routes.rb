@@ -15,6 +15,8 @@ Karate67272::Application.routes.draw do
   resources :sessions
   match 'logout' => 'sessions#destroy', :as => :logout
   match 'login' => 'sessions#new', :as => :login
+  match '/finalstandings/:id' => 'sections#final_standings', :as => :final_standings
+  match '/savefinalstandings/:id' => 'sections#save_final_standings', :as => :edit_final_standings
   
   # Semi-static page routes
   match 'home' => 'home#index', :as => :home

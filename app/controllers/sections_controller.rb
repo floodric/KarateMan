@@ -49,4 +49,18 @@ class SectionsController < ApplicationController
     flash[:notice] = "Successfully removed #{@section.name} from karate tournament system"
     redirect_to sections_url
   end
+
+  def final_standings
+    @section = Section.find(params[:id])
+    @registrations = @section.registrations
+  end
+
+  def save_final_standings
+    @registrations = Registration.find(params[:registration_ids])  
+    @registrations.each { |r|
+      r.update_attributes!(params[:registration].reject{|k,v| v.blank?})
+    }
+    flash[:notice] = "Added Final Standings!"
+    redirect_to section_path(@registrations.first.section)
+  end
 end
