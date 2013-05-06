@@ -10,7 +10,7 @@
   			<th>Rank</th>
   			<th>Age</th>
         <th>Paid?</th>
-  			<th>&nbsp;</th>
+  			<th>Place</th>
         <th>&nbsp;</th>
       </tr>
     </thead>
@@ -22,7 +22,13 @@
           <td><%= rank_name(student.rank)  %></td>
           <td><%= student.age %></td>
           <td><%= reg.fee_paid ? "Yes" : "No" %></td>
-          <td><%= link_to raw("<i class='icon-pencil'></i>"), registration_path(reg)%></td>
+          <td>
+            <% if reg.final_standing.nil? %>
+              <%= link_to raw("<i class='icon-star-empty'></i>"), final_standings_path(reg) %>
+            <% else %> 
+              <%= reg.final_standing.to_s %>
+            <%end%>
+          </td>
           <td><%= link_to raw("<i class='icon-remove'></i>"), registration_path(Registration.for_student(student.id).for_section(@section.id).first), :method => 'delete', :confirm => 'Are you sure?' %>
         </tr>
       <% end %>

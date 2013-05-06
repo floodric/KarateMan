@@ -51,8 +51,7 @@ class SectionsController < ApplicationController
   end
 
   def final_standings
-    @section = Section.find(params[:id])
-    @registrations = @section.registrations
+    @registration = Registration.find(params[:id])
   end
 
   def save_final_standings

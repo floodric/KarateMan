@@ -66,6 +66,10 @@ td.centered {
 .icon-arrow-left {
 	background-image: url("./img/glyphicons-halflings.png");
 }
+/****** MAYBE GET BETTER ICON ******/
+.icon-star-empty { 
+	background-image: url("./img/glyphicons-halflings.png");
+}
 
 .icon-white {
 	background-image: url("./img/glyphicons-halflings-white.png");

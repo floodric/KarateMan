@@ -1,19 +1,18 @@
-<h4>HI</h4>
-<% form_tag edit_final_standings_path do %>
-<table>
-  <tr>
-    <th></th>
-    <th>Name</th>
-    <th>Final Standing</th>
-    <th>Price</th>
-  </tr>
-<% for registration in @registrations %>
-  <tr>
-    <td><%= registration.student.proper_name %></td>
-    <td><%=h registration.final_standing   %></td>
-  </tr>
-<% end %>
-</table>
-<%= submit_tag "Edit Checked" %>
-<% end %>
+<%= simple_form_for @registration, :html => { :class => 'form-horizontal' } do |f| %>
+  <fieldset>
+    <legend><%= controller.action_name.capitalize %> Registration</legend>
+    
+    <p><b>Tournament: </b><%= @registration.tournament.name %></p>
+    <p><b>Event: </b><%= @registration.event.name+", "+rank_range_for(@registration.section) %></p>
+    <p><b>Contestant: </b><%= @registration.student.proper_name+", "+rank_name(@registration.student.rank) %></p>
+    
+    <% if current_user.is_admin? %>
+      <%= f.input :final_standing %>
+    <% end %>
 
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', sections_path, :class => 'btn' %>
+    </div>
+  </fieldset>
+<% end %>

@@ -1,0 +1,25 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Student</th>
+      <th>Event</th>
+      <th>Tournament</th>
+      <th class="centered">Place</th>
+      <th>Fee Paid?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @registrations.each do |registration| %>
+      <tr>
+        <td><%= link_to registration.student.name, student_path(registration.student.id) %></td>
+        <td><%= link_to registration.event.name, event_path(registration.event.id) %></td>
+        <td><%= link_to registration.tournament.name, section_path(registration.tournament.id) %></td>
+        <td>
+          <%= registration.student.rank %>
+        </td>
+        <td><%= registration.fee_paid == true ? "Yes" : "No" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @registrations, :previous_label => "Previous", :next_label => "Next", param_name: "reg_page" %>
