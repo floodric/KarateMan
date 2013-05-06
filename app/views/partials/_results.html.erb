@@ -1,0 +1,36 @@
+<h4>Last Tournament Results</h4>
+<% if @result_sections.empty? %>
+  <p> Results have not been entered for @done_tournament.name </p>
+<% else %>
+  <h5>Results for <%= @done_tournament.name %></h5>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Event</th>
+        <th>Ranks</th>
+        <th>Results</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @result_sections.each do |res_section| %>
+        <% section = res_section[0] %>
+        <% finalists = res_section[1] %>
+        <tr>
+          <td><%= link_to section.event.name, section %></td>
+          <td><%= rank_range_for(section)%></td>
+          <td>
+            <% finalists.each do |reg| %>
+              <p><%= reg.final_standing.to_s+": "+reg.student.proper_name %></p>
+            <% end %>
+          </td>
+          <td></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate @result_sections, :previous_label => "Previous", :next_label => "Next", :param_name => "res_page" %>
+  <% if @done_tournament.sections.size > @result_sections.size %>
+    <p><%= (@done_tournament.sections.size - @result_sections.size).to_s+" Sections missing results" %></p>
+  <% end %>
+<% end %>

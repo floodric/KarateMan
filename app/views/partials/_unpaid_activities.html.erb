@@ -1,0 +1,32 @@
+<h4>Unpaid Registrations</h4>
+<% if @registrations.empty? %>
+  <p>All registrations have been paid!</p>
+<% else %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Student</th>
+        <th>Event</th>
+        <th>Tournament</th>
+        <th>Registration Date</th>
+        <th>Tournament Date</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @registrations.each do |registration| %>
+        <tr>
+          <td><%= link_to registration.student.name, student_path(registration.student.id) %></td>
+          <td><%= link_to registration.event.name, event_path(registration.event.id) %></td>
+          <td><%= link_to registration.tournament.name, section_path(registration.tournament.id) %></td>
+          <td><%= registration.date.strftime("%m/%d/%y") %></td>
+          <td><%= registration.tournament.date.strftime("%m/%d/%y") %></td>
+          <td>
+            <%= link_to raw("<i class='icon-ok icon-white'></i></i>Paid"), fee_paid_path(registration), :class => 'btn btn-mini btn-success' %>
+        </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate @registrations, :previous_label => "Previous", :next_label => "Next", :param_name => "reg_page" %>
+<% end %>

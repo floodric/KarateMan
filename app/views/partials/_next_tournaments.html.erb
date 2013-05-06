@@ -1,22 +1,26 @@
 <h4>Next Tournaments</h4>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Tournament</th>
-      <th>Date</th>
-      <th>Size</th>
-      <th>Unpaid</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @tournaments.each do |tournament| %>
+<% if @tournaments.empty? %>
+  <p>No upcoming tournaments</p>
+  <%= link_to raw("<i class='icon-plus icon-white'></i> Add a New Tournament"), new_tournament_path, :class => 'btn btn-primary', :id => 'Create Tournament' %>
+<% else %>
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= link_to tournament.name, tournament %></td>
-        <td><%= tournament.date.strftime("%m/%d/%y") %></td>
-        <td><%= tournament.registrations.size %></td>
-        <td><%= tournament.registrations.select{|r| r.fee_paid == false }.size %></td>
+        <th>Tournament</th>
+        <th>Date</th>
+        <th>Size</th>
+        <th>Unpaid</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @tournaments.each do |tournament| %>
+        <tr>
+          <td><%= link_to tournament.name, tournament %></td>
+          <td><%= tournament.date.strftime("%m/%d/%y") %></td>
+          <td><%= tournament.registrations.size %></td>
+          <td><%= tournament.registrations.select{|r| r.fee_paid == false }.size %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

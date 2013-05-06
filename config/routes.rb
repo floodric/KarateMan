@@ -11,12 +11,17 @@ Karate67272::Application.routes.draw do
   resources :tournaments
   resources :users
   
-
+  # login stuff
   resources :sessions
   match 'logout' => 'sessions#destroy', :as => :logout
   match 'login' => 'sessions#new', :as => :login
+
+
+  # final standing custom form
   match '/finalstandings/:id' => 'sections#final_standings', :as => :final_standings
-  match '/savefinalstandings/:id' => 'sections#save_final_standings', :as => :edit_final_standings
+  
+  # fee paid custom form
+  match '/feepaid/:id' => 'registrations#fee_paid', :as => :fee_paid
   
   # Semi-static page routes
   match 'home' => 'home#index', :as => :home

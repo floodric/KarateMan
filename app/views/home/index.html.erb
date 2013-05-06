@@ -1,8 +1,6 @@
 <% if current_user && current_user.is_admin? %>
-  <h4>Welcome <%= @student.nil? ? "Admin" : @student.proper_name %></h4>
   <%= render :partial => "admin_home" %>
 <% elsif current_user && current_user.is_member? # for future proofing %>
-  <h4>Welcome <%= @student.nil? ? "" : @student.proper_name %></h4>
   <%= render :partial => "member_home" %>
 <% else %>
   <%= render :partial => "general_home" %>

@@ -66,13 +66,20 @@ td.centered {
 .icon-arrow-left {
 	background-image: url("./img/glyphicons-halflings.png");
 }
-/****** MAYBE GET BETTER ICON ******/
+
+/****** MAYBE GET BETTER ICONS ******/
 .icon-star-empty { 
 	background-image: url("./img/glyphicons-halflings.png");
 }
 
+.icon-ok { 
+	background-image: url("./img/glyphicons-halflings.png");
+}	
+
+/****** Everything goes before this, otherwise cannot make white *****/
 .icon-white {
 	background-image: url("./img/glyphicons-halflings-white.png");
 }
+
 
 

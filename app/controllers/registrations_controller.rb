@@ -48,4 +48,12 @@ class RegistrationsController < ApplicationController
     # redirect_to registrations_url
     redirect_to section_path(section_id) # go to show section page
   end
+
+  def fee_paid
+    @registration = Registration.find(params[:id])
+    @registration.fee_paid = true
+    @registration.save!
+    flash[:notice] = "Registration for #{@registration.student.proper_name} marked as paid"
+    redirect_to home_path
+  end
 end
