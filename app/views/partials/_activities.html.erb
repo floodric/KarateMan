@@ -1,6 +1,7 @@
 <table class="table table-striped">
   <thead>
     <tr>
+      <th>Tournament</th>
       <th>Event</th>
 			<th class="centered">Place</th>
       <th>Fee Paid?</th>
@@ -9,9 +10,10 @@
   <tbody>
     <% @registrations.each do |registration| %>
       <tr>
+        <td><%= link_to registration.tournament.name, tournament_path(registration.tournament.id) %></td>
         <td><%= link_to registration.event.name, section_path(registration.section.id) %></td>
 				<td>
-				  <%= registration.section.location.nil? ? 'TBD' : registration.section.location %>
+				  <%= registration.section.location.blank? ? 'TBD' : registration.section.location %>
 				</td>
         <td><%= registration.fee_paid == true ? "Yes" : "No" %></td>
       </tr>
