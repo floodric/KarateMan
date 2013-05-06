@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="span8">
 		<h3>Student Details</h3>
-		<%= render :partial => "student_details" %>
+		<%= render :partial => "partials/student_details" %>
 	</div>
 	<div class="span4">
 	  <h3>User Info</h3>
@@ -9,7 +9,7 @@
 	  	<p>No User for this Student</p>
 	  	<%= link_to(raw("<i class='icon-plus icon-white'></i> Create User"), new_user_path(:id => @student.id, :from => 'student'), :class => 'btn btn-primary') %>
 	  <% else %>
-			<%= render :partial => "user_details"%>
+			<%= render :partial => "partials/user_details"%>
 		<% end %>
 
 	</div>

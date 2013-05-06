@@ -21,7 +21,9 @@
           <td><%= rank_range_for(section)%></td>
           <td>
             <% finalists.each do |reg| %>
-              <p><%= reg.final_standing.to_s+": "+reg.student.proper_name %></p>
+              <p>
+                <%= reg.final_standing.to_s+": "%> <%= link_to reg.student.proper_name, student_path(reg.student.id) %>
+              </p>
             <% end %>
           </td>
           <td></td>

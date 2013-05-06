@@ -1,7 +1,8 @@
 <% if current_user && current_user.is_admin? %>
   <%= render :partial => "admin_home" %>
 <% elsif current_user && current_user.is_member? # for future proofing %>
-  <%= render :partial => "member_home" %>
+  <%= render :template => 'students/show'#, :student => current_user.student.id.to_s) 
+  %>
 <% else %>
   <%= render :partial => "general_home" %>
 <% end %>
