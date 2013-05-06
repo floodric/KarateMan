@@ -1,23 +1,27 @@
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Tournament</th>
-      <th>Event</th>
-			<th class="centered">Location</th>
-      <th>Fee Paid?</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @registrations.each do |registration| %>
+<% if @registrations.empty? %>
+  <p>No activity to show</p>
+<% else %>
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= link_to registration.tournament.name, tournament_path(registration.tournament.id) %></td>
-        <td><%= link_to registration.event.name, section_path(registration.section.id) %></td>
-				<td>
-				  <%= registration.section.location.blank? ? 'TBD' : registration.section.location %>
-				</td>
-        <td><%= registration.fee_paid == true ? "Yes" : "No" %></td>
+        <th>Tournament</th>
+        <th>Event</th>
+  			<th class="centered">Location</th>
+        <th>Fee Paid?</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= will_paginate @registrations, :previous_label => "Previous", :next_label => "Next", param_name: "reg_page" %>
+    </thead>
+    <tbody>
+      <% @registrations.each do |registration| %>
+        <tr>
+          <td><%= link_to registration.tournament.name, tournament_path(registration.tournament.id) %></td>
+          <td><%= link_to registration.event.name, section_path(registration.section.id) %></td>
+  				<td>
+  				  <%= registration.section.location.blank? ? 'TBD' : registration.section.location %>
+  				</td>
+          <td><%= registration.fee_paid == true ? "Yes" : "No" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate @registrations, :previous_label => "Previous", :next_label => "Next", param_name: "reg_page" %>
+<% end %>
