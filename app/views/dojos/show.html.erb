@@ -1,17 +1,24 @@
-<p id="notice"><%= notice %></p>
 <div class="row">
   <div class="span4">
     <h3>Dojo Details</h3>
-    <%= render partial: "dojo_details" %>
-    <h4>Current Members</h4>
-    <%if @dojo_students.empty? %>
-      <p>None at this time</p>
-    <% else %>
-      <%= render partial: "dojo_students" %>
-    <% end %>
+    <%= render :partial => "dojo_details" %>
   </div>
   <div class="span7">
-    <%= image_tag @dojo.create_map_link, class: "img-rounded pull-right" %>
+    <%= image_tag @dojo.create_map_link, :class => "img-rounded pull-right" %>
+  </div>
+</div>
+<div class="row">
+  <div class="span12">
+    <% if !current_user.nil? %>
+      <% if current_user.is_admin? || current_user.student.current_dojo.id == @dojo.id %>
+        <h4>Current Members</h4>
+        <%if @dojo_students.empty? %>
+          <p>None at this time</p>
+        <% else %>
+          <%= render partial: "dojo_students"  %>
+        <% end %>  
+      <% end  %>
+    <% end %>
   </div>
 </div>
 

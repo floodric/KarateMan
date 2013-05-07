@@ -3,9 +3,14 @@ class Ability
 
   def initialize(user)
     user ||= User.new # guest user (not logged in)
-    if user.role == 'admin'
+    if user.role? :admin
       can :manage, :all
-    elsif user.role == 'member'
+    elsif user.role? :member
+      # can read themselves
+
+      can :read, Student do |student|
+        student.id == user.student_id
+      end
 
       # can update themselves
       can :update, Student do |student|
@@ -17,10 +22,11 @@ class Ability
         student.id == user.student_id
       end
 
-      # can read everything
-      can :read, :all
+      can :index, Dojo
+
+      can :read, Dojo
     else 
-      can :read , :dojo
+      can :read , Dojo
     end
 
     # The first argument to `can` is the action you are giving the user 
