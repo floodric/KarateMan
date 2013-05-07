@@ -12,7 +12,6 @@ gem 'cancan'
 gem "nested_form", :git => 'git://github.com/ryanb/nested_form.git'
 # PASSWORD RESETS
 gem "letter_opener"
-gem "carrierwave"
 
 
 # Gems used only in testing

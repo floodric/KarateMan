@@ -3,6 +3,18 @@ NOTE TO GRADERS
 *************************************
 For some reason, on my own cucumber tests, when I run the whole suite, one or two methods fail.  But when I run that level, they work fine
 
+ALSO
+added password resetting. 2 extra credit points
+
+GMAIL will not automate the send if the account doesnt seem to be valid after about 3 accounts, I cannot get it to work more than twice. I have used it once on the one provided to you
+
+user: cmu.is.272@gmail.com
+pass: 272.is.cmu 
+
+If it doesnt work I used letter_opener gem to display it as if the email were received for development.  The last line in config/development.rb is this:
+# config.action_mailer.delivery_method = :letter_opener
+
+uncomment it, it will open the email in a new tab, as if it were delivered.
 
 
 
