@@ -7,6 +7,7 @@
         <th>Name</th>
         <th>City, State</th>
         <th>Members</th>
+        <%# This comes up alot. first check if we have current user (since public-facing) then check if it is an admin %>
         <% if !current_user.nil? %>
           <% if current_user.is_admin? %>
             <th>&nbsp;</th>

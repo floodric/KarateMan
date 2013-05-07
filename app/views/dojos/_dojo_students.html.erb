@@ -12,6 +12,7 @@
   </thead>
   <tbody>
     <% @dojo_students.each do |s| %>
+      <% current_dojo_student = s.dojo_students.select{|ds| ds.end_date.nil?}.first %>
       <tr>
         <td><%= link_to s.name, student_path(s.id) %></td>
         <td>
@@ -19,7 +20,9 @@
         </td>
         <% if !current_user.nil? %>
           <% if current_user.is_admin? %>
-            <td><%= link_to raw("<i class='icon-remove'></i>Remove"), dojo_student_path(ds), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-mini' %></td>
+            <td>
+              <%= link_to raw("<i class='icon-remove'></i>"), dojo_student_path(current_dojo_student), :method => 'delete', :confirm => 'Are you sure?' %>
+            </td>
           <% end %> 
         <% end %>
       </tr>

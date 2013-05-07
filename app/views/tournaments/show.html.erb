@@ -11,7 +11,9 @@
     <h3>Tournament Sections</h3>
     <% if @sections.empty? %>
       <p>No sections for this tournament yet</p>
-      <%= link_to(raw("<i class='icon-plus icon-white'></i> New Section"), new_section_path(:id => @tournament.id, :from => 'tournament'), :class => 'btn btn-primary') %>
+      <% if current_user.is_admin? %>
+        <%= link_to(raw("<i class='icon-plus icon-white'></i> New Section"), new_section_path(:id => @tournament.id, :from => 'tournament'), :class => 'btn btn-primary') %>
+      <% end %>
     <%else%>
       <%= render partial: "tournament_sections" %>
     <%end%>

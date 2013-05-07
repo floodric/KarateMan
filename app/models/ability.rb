@@ -9,7 +9,7 @@ class Ability
       can :update, Student do |student|
         student.id == user.student_id
       end
-      can :delete. Student do |student|
+      can :delete, Student do |student|
         student.id == user.student_id
       end
       can :read, :all
