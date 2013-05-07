@@ -1,6 +1,7 @@
 class TournamentsController < ApplicationController
   # load_and_authorize_resource
   before_filter :check_login
+  authorize_resource
   
   # GET /tournaments
   # GET /tournaments.json

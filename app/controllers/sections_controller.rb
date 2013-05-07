@@ -1,5 +1,6 @@
 class SectionsController < ApplicationController
   before_filter :check_login
+  authorize_resource
   
   def index
     @sections = Section.alphabetical.paginate(:page => params[:page]).per_page(8) 

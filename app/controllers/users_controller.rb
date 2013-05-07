@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  authorize_resource
   # before_filter :check_login
   # GET /users
   # GET /users.json
