@@ -9,14 +9,6 @@
   <% end %>
     <%= render :partial => "admin_home" %> 
 <% elsif current_user && current_user.is_member? # for future proofing %>
-  <%= form_tag search_path do %>
-    <div class="control-group">
-      <div class="controls">
-        <%= text_field_tag :query, params[:query] %>
-      </div>
-    </div>
-    <div class="actions"><%= submit_tag "Search" %></div>
-  <% end %>
   <%= render :template => 'students/show'#, :student => current_user.student.id.to_s) 
   %>
 <% else %>

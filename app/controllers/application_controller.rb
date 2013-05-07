@@ -2,8 +2,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:error] = "You do not have permission to do that."
-    redirect_to root_url, :alert => exception.message
+    flash[:error] = "You do not have permission to do that: "+exception.message
+    redirect_to root_url#, :alert => exception.message
   end
 
   private

@@ -60,4 +60,5 @@ class StudentsController < ApplicationController
     flash[:notice] = "Successfully marked #{@student.proper_name} as having a waiver signed"
     redirect_to home_path
   end
+
 end

@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   # load_and_authorize_resource
-  
+
   def index
     if current_user then
       @student = current_user.student

@@ -11,6 +11,8 @@ Karate67272::Application.routes.draw do
   resources :tournaments
   resources :users
   
+  get 'students/autocomplete_first_name'
+
   # login stuff
   resources :sessions
   match 'logout' => 'sessions#destroy', :as => :logout
