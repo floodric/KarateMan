@@ -36,6 +36,25 @@ class User < ActiveRecord::Base
     find_by_email(email).try(:authenticate, password)
   end
   
+
+  #password reset token
+  # before_create { generate_token(:auth_token) }
+  
+  def generate_token(column)
+    begin
+      self[column] = SecureRandom.urlsafe_base64
+    end while User.exists?(column => self[column])
+  end
+  # password reset method
+  def send_password_reset
+    generate_token(:password_reset_token)
+    self.password_reset_sent_at = Time.zone.now
+    save!
+    UserMailer.password_reset(self).deliver
+  end
+
+
+
   private
   def student_is_active_in_system
     # get an array of all active students in the system

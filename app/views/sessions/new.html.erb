@@ -1,6 +1,4 @@
 <h3>Log In</h3>
-<p>claud.zulauf@example.com: admin</p>
-<p>kevon.gusikowski@example.com: user</p>
 <%= form_tag sessions_path do %>
 
   <div class="control-group">
@@ -18,4 +16,5 @@
   </div>
 
   <div class="actions"><%= submit_tag "Log In" %></div>
+  <p><%= link_to "forgotten password?", new_password_reset_path %></p>
 <% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130413225538) do
+ActiveRecord::Schema.define(:version => 20130507193242) do
 
   create_table "dojo_students", :force => true do |t|
     t.integer "dojo_id"
@@ -75,11 +75,13 @@ ActiveRecord::Schema.define(:version => 20130413225538) do
   end
 
   create_table "users", :force => true do |t|
-    t.string  "email"
-    t.integer "student_id"
-    t.string  "password_digest"
-    t.string  "role"
-    t.boolean "active",          :default => true
+    t.string   "email"
+    t.integer  "student_id"
+    t.string   "password_digest"
+    t.string   "role"
+    t.boolean  "active",                 :default => true
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
   end
 
 end
