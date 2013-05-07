@@ -44,7 +44,9 @@ class User < ActiveRecord::Base
     begin
       self[column] = SecureRandom.urlsafe_base64
     end while User.exists?(column => self[column])
+    # this while look goes while exists a user whose column matches our column, generate a random hash
   end
+  
   # password reset method
   def send_password_reset
     generate_token(:password_reset_token)
