@@ -1,3 +1,11 @@
+*************************************
+NOTE TO GRADERS
+*************************************
+For some reason, on my own cucumber tests, when I run the whole suite, one or two methods fail.  But when I run that level, they work fine
+
+
+
+
 A&M Karate School App :: 67-272
 ===
 This is a basic Rails app that was built as a solution to phase 4 (of 5) of the course project in the spring of 2013.  This phase does give you some basic views, but moving forward a student should restyle the app so that the overall look and feel is different.  (Some students have nice designs -- ones far better than this very generic design -- and I don't want those students abandoning better design for this very generic one.)

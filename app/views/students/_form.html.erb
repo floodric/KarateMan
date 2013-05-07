@@ -14,8 +14,8 @@
         </p>
       </div>
     </div>
-  </div>
-  <%= render partial: "student_fields", locals: {f: student_f} %>
+  
+    <%= render partial: "student_fields", locals: {f: student_f} %>
     <div class="form-actions">
       <%= student_f.submit nil, :class => 'btn btn-primary' %>
       <%= link_to 'Cancel', students_path, :class => 'btn' %>

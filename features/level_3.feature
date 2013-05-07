@@ -85,6 +85,7 @@ Feature: Manage students
     And I select "1993" from "student_date_of_birth_1i"
     And I select "Fifth Gup" from "student_rank"
     And I check "student_active"
+    Then show me the page
     And I press "Create Student"
     Then I should see "Successfully created Zaphod Beeblebrox"
     And I should see "Name: Beeblebrox, Zaphod"

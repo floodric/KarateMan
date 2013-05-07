@@ -4,6 +4,7 @@
       <th>Event</th>
       <th>Age Range</th>
       <th>Rank Range</th>
+      <th>Final Standings?</th>
     </tr>
   </thead>
   <tbody>
@@ -12,6 +13,7 @@
         <td><%= link_to section.event.name, section_path(section.id) %></td>
         <td><%= age_range_for(section) %></td>
         <td><%= rank_range_for(section) %></td>
+        <td><%= section.registrations.select{|r| !r.final_standing.nil?}.size > 0 ? "Done" : "Needed" %></td>
       </tr>
     <% end %>
   </tbody>

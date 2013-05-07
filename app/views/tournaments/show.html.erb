@@ -1,9 +1,13 @@
 <div class="row">
-  <div class="span4">
+  <div class="span5">
     <h3>Tournament Details</h3>
     <%= render :partial => "partials/tournament_details" %>
+    <br>
+    <% if @tournament.date < Date.today %>
+      <%= render :partial => "partials/results_status" %>
+    <% end %>
   </div>
-  <div class="span8">
+  <div class="span7">
     <h3>Tournament Sections</h3>
     <% if @sections.empty? %>
       <p>No sections for this tournament yet</p>
@@ -13,6 +17,14 @@
     <%end%>
   </div>
 </div>
+<% if @tournament.date < Date.today %>
+  <div class="row">
+    <div class="span12">
+      <%= render :partial => "partials/results" %>
+    </div>
+  </div>
+<% end %>
+
 
 <div class="form-actions">
   <%= link_to raw("<i class='icon-list'></i> Display All Tournaments"), tournaments_path, :class => 'btn'  %>&nbsp;&nbsp;

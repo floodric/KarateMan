@@ -20,8 +20,11 @@ Karate67272::Application.routes.draw do
   # final standing custom form
   match '/finalstandings/:id' => 'sections#final_standings', :as => :final_standings
   
-  # fee paid custom form
+  # fee paid quick link
   match '/feepaid/:id' => 'registrations#fee_paid', :as => :fee_paid
+
+  # waiver signed quick link
+  match '/waiversigned/:id' => 'students#waiver_signed', :as => :waiver_signed
   
   # Semi-static page routes
   match 'home' => 'home#index', :as => :home

@@ -1,0 +1,10 @@
+<p><%= @tournament.name %> ended <%= (Date.today-@tournament.date).to_i %> days ago</p>
+<% # tournaments sections which have at least one final standing
+  result_sections = @tournament.sections.select{ |s| 
+    s.registrations.select{ |r| 
+      !r.final_standing.nil?
+    }.size > 0
+  } 
+%>
+<p>There are <%= (@tournament.sections.size - result_sections.size).to_s+" Sections missing results" %>
+</p>

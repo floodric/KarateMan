@@ -11,6 +11,9 @@ class HomeController < ApplicationController
         # unpaid registrations parital
         @registrations = Registration.unpaid.by_date.by_student.paginate(:page => params[:reg_page]).per_page(10)
 
+        # students without waiver partial
+        @needswaiver = Student.needs_waiver
+
         # upcoming tournament 
         @tournaments = Tournament.upcoming.next(5)
 
@@ -26,7 +29,6 @@ class HomeController < ApplicationController
             # get only those who have a final standing
           @result_sections = sections.zip(finalists).paginate(:page => params[:res_page], :per_page => 10)
         end
-
 
       else
         ### STUDENT BRANCH

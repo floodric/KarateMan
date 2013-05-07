@@ -51,4 +51,12 @@ class StudentsController < ApplicationController
     flash[:notice] = "Successfully removed #{@student.proper_name} from karate tournament system"
     redirect_to students_url
   end
+
+  def waiver_signed
+    @student = Student.find(params[:id])
+    @student.waiver_signed=true
+    @student.save!
+    flash[:notice] = "Successfully marked #{@student.proper_name} as having a waiver signed"
+    redirect_to home_path
+  end
 end
