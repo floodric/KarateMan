@@ -71,6 +71,13 @@ class DojoTest < ActiveSupport::TestCase
       assert_in_delta(40.444167, @cmu.latitude, 0.00001)
       assert_in_delta(-79.943361, @cmu.longitude, 0.00001)
     end
+
+    should "have a method to create a map" do
+      link = @cmu.create_map_link
+      assert !link.blank?, "link should exist"
+      # now match that it makes a googleapi call with coords in it
+      assert !(link.match(/^http:\/\/maps.google.com\/maps\/api\/staticmap\?center=(-?\d{2}.\d{6}),(-?\d{2}.\d{6})/).nil?), "#{link}, link.match(/^http:\/\/maps.google.com\/maps\/api\/staticmap\?center=(-?\d{2}.\d{6}),(-?\d{2}.\d{6})/)"
+    end
     
     should "fail to identify geocoordinates for nonsense addresses" do
       bad_dojo = FactoryGirl.build(:dojo, name: "Bad Dojo", street: "Qo'noS", city: "Qo'noS", state: "PA", zip: "00001")

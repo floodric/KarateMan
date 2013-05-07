@@ -93,5 +93,26 @@ class UserTest < ActiveSupport::TestCase
       deny User.authenticate('gruberman@example.com', 'notsecret')
       assert User.authenticate('gruberman@example.com', 'secret')
     end
+
+    should "have a generate_token method to generate a random string for a given column" do
+      assert @jen_user.password_reset_token.blank?
+      @jen_user.generate_token(:password_reset_token)
+      deny @jen_user.password_reset_token.blank?
+    end
+
+    should "have a method send_password_reset which sends a password reset link" do
+      old_hash = @jen_user.password_reset_token
+      old_time = @jen_user.password_reset_sent_at
+      begin
+        @jen_user.send_password_reset
+      rescue # THROWS ERROR BECUASE IT WANTS TO EMAIL BUT CANT DUE TO SOMETHING
+        assert (@jen_user.password_reset_token != old_hash), "hash should change"
+        if old_time # old time is likely nil
+          assert (@jen_user.password_reset_sent_at > old_time), "old time should be before new time"
+        else # make sure new isnt nil
+          assert !(@jen_user.password_reset_sent_at.nil?)
+        end
+      end
+    end
   end
 end
