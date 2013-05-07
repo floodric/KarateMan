@@ -8,6 +8,8 @@
     <%= render :partial => "inactive_dojos" %>
   </div>
 </div>
-<% if current_user.is_admin? %>
-  <%= link_to raw("<i class='icon-plus icon-white'></i> Add a New dojo"), new_dojo_path, :class => 'btn btn-primary', :id => 'Create dojo' %>
+<% if !current_user.nil? %>
+  <% if current_user.is_admin? %>
+    <%= link_to raw("<i class='icon-plus icon-white'></i> Add a New dojo"), new_dojo_path, :class => 'btn btn-primary', :id => 'Create dojo' %>
+  <% end %>
 <% end %>

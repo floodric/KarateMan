@@ -3,6 +3,11 @@
     <tr>
       <th>Student</th>
       <th>Rank</th>
+      <% if !current_user.nil? %>
+        <% if current_user.is_admin? %>
+          <th></th>
+        <% end %> 
+      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -12,6 +17,11 @@
         <td>
           <%= rank_name(s.rank) %>
         </td>
+        <% if !current_user.nil? %>
+          <% if current_user.is_admin? %>
+            <td><%= link_to raw("<i class='icon-remove'></i>Remove"), dojo_student_path(ds), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-mini' %></td>
+          <% end %> 
+        <% end %>
       </tr>
     <% end %>
   </tbody>

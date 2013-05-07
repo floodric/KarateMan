@@ -7,7 +7,11 @@
         <th>Name</th>
         <th>City, State</th>
         <th>Members</th>
-        <th>&nbsp;</th>
+        <% if !current_user.nil? %>
+          <% if current_user.is_admin? %>
+            <th>&nbsp;</th>
+          <% end %>
+        <% end %>
       </tr>
     </thead>
     <tbody>
@@ -16,12 +20,15 @@
           <td><%= link_to dojo.name, dojo_path(dojo) %></td>
           <td><%= dojo.city + ", " + dojo.state %></td>
           <td><%= dojo.current_students.size %></td>
-          <td class="centered">
+          <% if !current_user.nil? %>
+            <% if current_user.is_admin? %>
+              <td class="centered">
                 <%= link_to raw("<i class='icon-pencil'></i> Edit"), edit_dojo_path(dojo), :class => 'btn btn-mini' %>
                 &nbsp;
                 <%= link_to raw("<i class='icon-remove icon-white'></i> Destroy"), dojo_path(dojo), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
-          </td>
-          </td>
+              </td>
+            <% end %>
+          <% end %>
         </tr>
       <% end %>
     </tbody>
