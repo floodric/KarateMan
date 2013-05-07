@@ -8,7 +8,7 @@ class Ability
     elsif user.role? :member
       # can read themselves
 
-      can :read, Student do |student|
+      can :show, Student do |student|
         student.id == user.student_id
       end
 
@@ -17,23 +17,19 @@ class Ability
         student.id == user.student_id
       end
 
-      # can delete themselves 
+      # can delete themselves, i guess
       can :delete, Student do |student|
         student.id == user.student_id
       end
 
+      # can look at dojos
       can :index, Dojo
-
       can :read, Dojo
+
     else 
       can :read , Dojo
     end
 
-    # The first argument to `can` is the action you are giving the user 
-    # permission to do.
-    # If you pass :manage it will apply to every action. Other common actions
-    # here are :read, :create, :update and :destroy.
-    #
     # The second argument is the resource the user can perform the action on. 
     # If you pass :all it will apply to every resource. Otherwise pass a Ruby
     # class of the resource.

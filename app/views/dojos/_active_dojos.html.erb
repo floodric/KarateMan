@@ -8,10 +8,8 @@
         <th>City, State</th>
         <th>Members</th>
         <%# This comes up alot. first check if we have current user (since public-facing) then check if it is an admin %>
-        <% if !current_user.nil? %>
-          <% if current_user.is_admin? %>
-            <th>&nbsp;</th>
-          <% end %>
+        <% if current_user && current_user.is_admin? %>
+          <th>&nbsp;</th>
         <% end %>
       </tr>
     </thead>
@@ -21,14 +19,12 @@
           <td><%= link_to dojo.name, dojo_path(dojo) %></td>
           <td><%= dojo.city + ", " + dojo.state %></td>
           <td><%= dojo.current_students.size %></td>
-          <% if !current_user.nil? %>
-            <% if current_user.is_admin? %>
-              <td class="centered">
-                <%= link_to raw("<i class='icon-pencil'></i> Edit"), edit_dojo_path(dojo), :class => 'btn btn-mini' %>
-                &nbsp;
-                <%= link_to raw("<i class='icon-remove icon-white'></i> Destroy"), dojo_path(dojo), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
-              </td>
-            <% end %>
+          <% if current_user && current_user.is_admin? %>
+            <td class="centered">
+              <%= link_to raw("<i class='icon-pencil'></i> Edit"), edit_dojo_path(dojo), :class => 'btn btn-mini' %>
+              &nbsp;
+              <%= link_to raw("<i class='icon-remove icon-white'></i> Destroy"), dojo_path(dojo), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+            </td>
           <% end %>
         </tr>
       <% end %>

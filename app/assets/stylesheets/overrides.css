@@ -10,6 +10,7 @@
 #copy {
 	font-size: 85%;
 	text-align: center;
+	color:#FFEFCF;
 }
 
 .supertiny {
@@ -21,27 +22,39 @@
 	line-height: 1.5;
 }
 
-select.date { width: 90px; }
-select.time { width: 90px; }
-
-td.centered {
-	text-align: center;
+.navbar-inner {
+  background-color: #3C1a0a; 
+}
+/* following taken from sticky-footer cssstickyfooter.com */
+html, body {
+	height: 100%;
+	background-color: #FFEFCF;
 }
 
-.form-actions {
-	background-color: #FFF;
+a{
+	color:#459AFF;
 }
 
-.form-actions-min {
-	background-color: #FFF;
-	border: none;
-	padding: 10px 10px 10px 180px;
-	/*padding-left: 180px;*/
+#main_content {
+  background-color: #fff;
+  margin:-3px;
+  margin-bottom: 15px;
+  border:3px solid #fff;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
 }
 
-.pagination ul > li > a, .pagination ul > li > span {
-	border-left-width: 1px;
-}
+#footer {
+  position: relative;
+  width: 100%;
+  min-width: 100%;
+  background-color: #5c2717;
+  margin-top: -50px; /* negative value of footer height */
+  height:50px;
+  clear:both;
+} 
+
 
 
 /*** TEMP FIX ON BOOTSTRAP ICONS ***/
