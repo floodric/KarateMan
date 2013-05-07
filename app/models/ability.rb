@@ -17,6 +17,10 @@ class Ability
         student.id == user.student_id
       end
 
+      can :update, User do |u|
+        u.student_id == user.student_id
+      end
+
       # can delete themselves, i guess
       can :delete, Student do |student|
         student.id == user.student_id

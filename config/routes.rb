@@ -1,5 +1,7 @@
 Karate67272::Application.routes.draw do
 
+  get "password_resets/new"
+
   # Generated routes
   resources :events
   resources :registrations
@@ -11,12 +13,13 @@ Karate67272::Application.routes.draw do
   resources :tournaments
   resources :users
   
-  get 'students/autocomplete_first_name'
+
 
   # login stuff
   resources :sessions
   match 'logout' => 'sessions#destroy', :as => :logout
   match 'login' => 'sessions#new', :as => :login
+  resources :password_resets
 
 
   # final standing custom form
