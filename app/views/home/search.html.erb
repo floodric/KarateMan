@@ -1,2 +1,12 @@
-<h1>Home#search</h1>
-<p>Find me in app/views/home/search.html.erb</p>
+<h2>Search result for term <em>'<%= @query %>'</em> resulted in <%= pluralize(@total_hits, 'hit') %></h2>
+<p class="supertiny">&nbsp;</p>
+
+<% unless @students.empty? %>
+  <p><em><strong>Students matching term '<%= @query %>'</strong></em></p>
+  <ul>
+    <% for student in @students do %>
+      <li><%= link_to student.proper_name, student_path(student) %></li>
+    <% end %>
+  </ul>
+  <p class="smtext">&nbsp;</p>
+<% end %>

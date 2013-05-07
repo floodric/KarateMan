@@ -36,6 +36,7 @@ class Student < ActiveRecord::Base
   scope :dans, where('rank > ?', 10)  
   scope :juniors, where('date_of_birth > ?', 18.years.ago.to_date)
   scope :seniors, where('date_of_birth <= ?', 18.years.ago.to_date)
+  scope :search, lambda { |term| where('first_name LIKE ? OR last_name LIKE ?', "#{term}%", "#{term}%") }
   # The following were replaced with class methods below
   # scope :ranks_between, lambda {|low_rank,high_rank| where("rank between ? and ?", low_rank, high_rank) }
   # scope :ages_between, lambda {|low_age,high_age| where("date_of_birth between ? and ?", ((high_age+1).years - 1.day).ago.to_date, low_age.years.ago.to_date) }

@@ -8,6 +8,7 @@ class HomeController < ApplicationController
         ### ADMIN BRANCH
 
         @student = current_user.student
+
         # unpaid registrations parital
         @registrations = Registration.unpaid.by_date.by_student.paginate(:page => params[:reg_page]).per_page(10)
 
@@ -49,5 +50,10 @@ class HomeController < ApplicationController
   end
 
   def search
+    @query = params[:query]
+    @students = Student.search(@query)
+    @total_hits = @students.size
   end
+
+
 end
